@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">NameGen 3.0</string>
+    <string name="button">Generate</string>
+    <string name="gender">Gender: </string>
+    <string name="nationality">Nationality: </string>
+
+    <string-array name="typesOfName">
+        <item>Both</item>
+        <item>Masculine</item>
+        <item>Feminine</item>
+    </string-array>
+
+    <string-array name="languages">
+        <item>Choose Nationality</item>
+        <item>French</item>
+        <item>Italian</item>
+        <item>Spanish</item>
+        <item>Portuguese</item>
+        <item>German</item>
+        <item>English</item>
+        <item>Polish</item>
+        <item>Russian</item>
+        <item>Swedish</item>
+        <item>Norwegian</item>
+        <item>Japanese</item>
+        <item>Arabic</item>
+
+
+        <item>Arabic</item>
+
+
+
+
+    </string-array>
+
+</resources>
