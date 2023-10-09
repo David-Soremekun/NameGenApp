@@ -1,5 +1,6 @@
 package com.example.namegen;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity{
@@ -54,10 +59,14 @@ public class MainActivity extends AppCompatActivity{
     String chosenNameType;
     public String genName;
     public int nameCount=12;
-    public Vector<String> listName = new Vector();
-    ArrayList<String> femFirstName;// = new ArrayList<String>();
-    ArrayList<String> mascFirstName;// = new ArrayList<String>();
-    ArrayList<String> LastName;// = new ArrayList<String>();
+    public Vector<String> nameList = new Vector();
+    List<String> femFirstName;// = new ArrayList<String>();
+    List<String> mascFirstName;// = new ArrayList<String>();
+    List<String> LastName;// = new ArrayList<String>();
+
+    String [] arrLastName;
+    String [] arrMaleName;
+    String [] arrFemName;
 
     /*List<String> frFirstNameB
             = new ArrayList<String>();*/
@@ -91,7 +100,7 @@ public class MainActivity extends AppCompatActivity{
     public void DisplayNames() { }
     public void PrintNames(){
         for (int i=0; i<nameCount; i++) {
-            System.out.println(listName.get(i));
+            System.out.println(nameList.get(i));
             System.out.println("");
         }
     }
@@ -99,11 +108,42 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
-    void GenerateNames()
-    {
+    void GenerateNames() {
+        int n;
+        int fn;
+        int ln;
+        int genderOption;
+        Random randInt= new Random();
+
+        for(int i=0; i < nameCount; i++)
+        {
+            Collections.shuffle(mascFirstName);
+            Collections.shuffle(LastName);
+
+            n= randInt.nextInt(mascFirstName.size());
+            fn = randInt.nextInt(femFirstName.size());
+            ln= randInt.nextInt(LastName.size());
+            genderOption= randInt.nextInt(2)+1;
+
+            if(var.equals(TypeOfName.eMale)){
+                genName=mascFirstName.get(n)+" "+ LastName.get(ln)+"M";
+                nameList.add(genName);
+            }else if(var.equals(TypeOfName.eFemale)) {
+                genName=femFirstName.get(fn)+" "+LastName.get(ln)+"F";
+                nameList.add(genName);
+            }else {
+                if(genderOption==2){
+                    genName=mascFirstName.get(n)+" "+ LastName.get(ln)+"M";
+                    nameList.add(genName);
+                }else{
+                    genName=femFirstName.get(fn)+" "+LastName.get(ln)+"F";
+                    nameList.add(genName);
+                }
+        }
 
 
-
+        }
+        PrintNames();
     }
     public void CreateToasty(){
         CharSequence message;
@@ -147,7 +187,7 @@ public class MainActivity extends AppCompatActivity{
 
             }
         });
-
+        Resources res= getResources();
 
 
         langSpin=findViewById(R.id.language_spinner);
@@ -166,11 +206,19 @@ public class MainActivity extends AppCompatActivity{
                     case "English":
                         chosenLang=Languages.eEnglish;
 
+
                     case "Spanish":
                         chosenLang=Languages.eSpanish;
                         break;
                     case "French":
                         chosenLang=Languages.eFrench;
+                        arrMaleName = res.getStringArray(R.array.frenchMaleNames);
+                        arrLastName = res.getStringArray(R.array.frenchLastNames);
+                        mascFirstName = Arrays.asList(arrMaleName);
+                        LastName = Arrays.asList(arrLastName);
+
+
+
                         break;
                     case "Portuguese":
                         chosenLang=Languages.ePortuguese;
@@ -201,6 +249,7 @@ public class MainActivity extends AppCompatActivity{
                         break;
                     default:
                         System.out.printf("Oopsie Poopsie!!!");
+                        System.out.println("");
                         break;
 
                 }
@@ -220,6 +269,7 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Log.d("MainActivity","Generated Names: ");
+                GenerateNames();
             }
         });
 
