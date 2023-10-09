@@ -3,6 +3,7 @@
     <string name="button">Generate</string>
     <string name="gender">Gender: </string>
     <string name="nationality">Nationality: </string>
+    <string name="generateNames">Generated Names: </string>
 
     <string-array name="typesOfName">
         <item>Both</item>
@@ -406,8 +407,8 @@
         <item>Guillaume</item>
         <item>Jourdain</item>
         <item>Laferriere</item>
-        <item>La fitte</item>
-        <item>La flamme</item>
+        <item>Lafitte</item>
+        <item>Laflamme</item>
         <item>Laframboise</item>
         <item>Lagrange</item>
         <item>Lamar</item>
@@ -455,6 +456,105 @@
     </string-array>
 
     <string-array name="frenchFemaleNames">
-
+        <item>Adrienne</item>
+        <item>Charlotte</item>
+        <item>Audrey</item>
+        <item>Natalie</item>
+        <item>Annette</item>
+        <item>Claire</item>
+        <item>Antoinette</item>
+        <item>Caroline</item>
+        <item>Avril</item>
+        <item>Beatrice</item>
+        <item>Madelyn</item>
+        <item>Brigitte</item>
+        <item>Sophie</item>
+        <item>Celine</item>
+        <item>Josephine</item>
+        <item>Chloe</item>
+        <item>Adeline</item>
+        <item>Chantal</item>
+        <item>Brielle</item>
+        <item>Anouk</item>
+        <item>Isabelle</item>
+        <item>Gabrielle</item>
+        <item>Valerie</item>
+        <item>Gisele</item>
+        <item>Eloise</item>
+        <item>Jeanne</item>
+        <item>Remi</item>
+        <item>Juliette</item>
+        <item>Genevieve</item>
+        <item>Lea</item>
+        <item>Annabell</item>
+        <item>Marion</item>
+        <item>Ember</item>
+        <item>Simone</item>
+        <item>Sydney</item>
+        <item>Sylvie</item>
+        <item>Amy</item>
+        <item>Alienor</item>
+        <item>Elise</item>
+        <item>Aline</item>
+        <item>Rosalie</item>
+        <item>Alize</item>
+        <item>Noelle</item>
+        <item>Amandine</item>
+        <item>Nicole</item>
+        <item>Amelie</item>
+        <item>Camille</item>
+        <item>Anais</item>
+        <item>Elania</item>
+        <item>Darcy</item>
+        <item>Michelle</item>
+        <item>Astrid</item>
+        <item>Lucille</item>
+        <item>Aurore</item>
+        <item>Vivienne</item>
+        <item>Margot</item>
+        <item>Celestine</item>
+        <item>Arielle</item>
+        <item>Clarisse</item>
+        <item>Claudette</item>
+        <item>Elle</item>
+        <item>Clemence</item>
+        <item>Auriane</item>
+        <item>Clementine</item>
+        <item>Liana</item>
+        <item>Clothilde</item>
+        <item>Colette</item>
+        <item>Corinne</item>
+        <item>Mallory</item>
+        <item>Cosette</item>
+        <item>Elaine</item>
+        <item>Delphine</item>
+        <item>Justice</item>
+        <item>Edwige</item>
+        <item>Eleonore</item>
+        <item>Julie</item>
+        <item>Elodie</item>
+        <item>Marie</item>
+        <item>Emeline</item>
+        <item>Louise</item>
+        <item>Ada</item>
+        <item>Jolie</item>
+        <item>Esmee</item>
+        <item>Adele</item>
+        <item>Fabienne</item>
+        <item>Bernadette</item>
+        <item>Faustine</item>
+        <item>Clara</item>
+        <item>Floriane</item>
+        <item>Diane</item>
+        <item>Frederique</item>
+        <item>Dominique</item>
+        <item>Geraldine</item>
+        <item>Fae</item>
+        <item>Heloise</item>
+        <item>Francine</item>
+        <item>Delphine</item>
+        <item>Odette</item>
+        <item>Fleur</item>
+        <item>Manon</item>
     </string-array>
 </resources>

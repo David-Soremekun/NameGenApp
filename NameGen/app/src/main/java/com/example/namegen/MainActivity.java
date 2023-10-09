@@ -3,11 +3,13 @@ package com.example.namegen;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.TextureView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,7 +26,10 @@ import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity{
 
-
+    Spinner genderSpin;
+    Spinner langSpin;
+    Button button;
+    TextView genText;
 
     enum TypeOfName{
 
@@ -49,110 +54,27 @@ public class MainActivity extends AppCompatActivity{
         eNone
 
     }
-    Spinner genderSpin;
-    Spinner langSpin;
-    Button button;
+
     TypeOfName var= TypeOfName.eBoth;
     Languages chosenLang= Languages.eNone;
-    public String[] languages={ "English","French","Spanish","Italian","German", "Portuguese",
-            "Norwegian", "Swedish","Japanese", "Polish","Russian", "Arabic"};
-    String chosenNameType;
+
     public String genName;
     public int nameCount=12;
-    public Vector<String> nameList = new Vector();
-    List<String> femFirstName;// = new ArrayList<String>();
-    List<String> mascFirstName;// = new ArrayList<String>();
-    List<String> LastName;// = new ArrayList<String>();
+
+
+    List<String> femFirstName;
+    List<String> mascFirstName;
+    List<String> LastName;
 
     String [] arrLastName;
     String [] arrMaleName;
     String [] arrFemName;
 
-    /*List<String> frFirstNameB
-            = new ArrayList<String>();*/
-    public void ReadFile(String filePath,ArrayList<String> testArray) throws IOException {
-
-        File file= new File(filePath);
-        testArray = new ArrayList<String>();
-        // load data from file
-        BufferedReader bf = new BufferedReader(
-                new FileReader(file));
-
-        // read entire line as string
-        String line = bf.readLine();
-        // checking for end of file
-        while (line != null) {
-            line = bf.readLine();
-            testArray.add(line);
-        }
-        // closing buffer reader object
-        bf.close();
-        // storing the data in arraylist to array
-        String[] array
-                = testArray.toArray(new String[0]);
-        // printing each line of file
-        // which is stored in array
-        for (String str : array)
-        {
-            System.out.println(str);
-        }
-    }
-    public void DisplayNames() { }
-    public void PrintNames(){
-        for (int i=0; i<nameCount; i++) {
-            System.out.println(nameList.get(i));
-            System.out.println("");
-        }
-    }
-    public void RemoveNamesFromDisplay(){
-
-    }
-
-    void GenerateNames() {
-        int n;
-        int fn;
-        int ln;
-        int genderOption;
-        Random randInt= new Random();
-
-        for(int i=0; i < nameCount; i++)
-        {
-            Collections.shuffle(mascFirstName);
-            Collections.shuffle(LastName);
-
-            n= randInt.nextInt(mascFirstName.size());
-            fn = randInt.nextInt(femFirstName.size());
-            ln= randInt.nextInt(LastName.size());
-            genderOption= randInt.nextInt(2)+1;
-
-            if(var.equals(TypeOfName.eMale)){
-                genName=mascFirstName.get(n)+" "+ LastName.get(ln)+"M";
-                nameList.add(genName);
-            }else if(var.equals(TypeOfName.eFemale)) {
-                genName=femFirstName.get(fn)+" "+LastName.get(ln)+"F";
-                nameList.add(genName);
-            }else {
-                if(genderOption==2){
-                    genName=mascFirstName.get(n)+" "+ LastName.get(ln)+"M";
-                    nameList.add(genName);
-                }else{
-                    genName=femFirstName.get(fn)+" "+LastName.get(ln)+"F";
-                    nameList.add(genName);
-                }
-        }
-
-
-        }
-        PrintNames();
-    }
-    public void CreateToasty(){
-        CharSequence message;
-        
-    }
-    @Override
+    public Vector<String> nameList = new Vector();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        genText=findViewById(R.id.name_container);
 
         genderSpin = findViewById(R.id.gender_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -213,8 +135,10 @@ public class MainActivity extends AppCompatActivity{
                     case "French":
                         chosenLang=Languages.eFrench;
                         arrMaleName = res.getStringArray(R.array.frenchMaleNames);
+                        arrFemName = res.getStringArray(R.array.frenchFemaleNames);
                         arrLastName = res.getStringArray(R.array.frenchLastNames);
                         mascFirstName = Arrays.asList(arrMaleName);
+                        femFirstName = Arrays.asList(arrFemName);
                         LastName = Arrays.asList(arrLastName);
 
 
@@ -269,7 +193,9 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Log.d("MainActivity","Generated Names: ");
+                RemoveNamesFromDisplay();
                 GenerateNames();
+                DisplayNames();
             }
         });
 
@@ -280,5 +206,63 @@ public class MainActivity extends AppCompatActivity{
             throw new RuntimeException(e);
         }*/
     }
+    public void DisplayNames()
+    {
+
+        genText.setText(nameList.toString());
+        nameList.clear();
+
+    }
+    public void PrintNames(){
+        for (int i=0; i<nameCount; i++) {
+            System.out.println(nameList.get(i));
+            System.out.println("");
+        }
+    }
+    public void RemoveNamesFromDisplay(){
+            genText.setText("");
+    }
+
+    void GenerateNames() {
+        int n;
+        int fn;
+        int ln;
+        int genderOption;
+        Random randInt= new Random();
+
+        for(int i=0; i < nameCount; i++)
+        {
+            Collections.shuffle(mascFirstName);
+            Collections.shuffle(femFirstName);
+            Collections.shuffle(LastName);
+
+            n= randInt.nextInt(mascFirstName.size());
+            fn = randInt.nextInt(femFirstName.size());
+            ln= randInt.nextInt(LastName.size());
+
+            genderOption= randInt.nextInt(2)+1;
+
+            if(var.equals(TypeOfName.eMale)){
+                genName=mascFirstName.get(n)+" "+ LastName.get(randInt.nextInt(LastName.size()))+" [M]";
+                nameList.add(genName);
+            }else if(var.equals(TypeOfName.eFemale)) {
+                genName=femFirstName.get(fn)+" "+LastName.get(randInt.nextInt(LastName.size()))+" [F]";
+                nameList.add(genName);
+            }else {
+                if(genderOption==2){
+                    genName=mascFirstName.get(n)+" "+ LastName.get(randInt.nextInt(LastName.size()))+" [M]";
+                    nameList.add(genName);
+                }else{
+                    genName=femFirstName.get(fn)+" "+LastName.get(ln)+" [F]";
+                    nameList.add(genName);
+                }
+        }
+
+
+        }
+        PrintNames();
+    }
+
+
 
 }

@@ -14,16 +14,15 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.091" />
+        app:layout_constraintVertical_bias="0.06" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="544dp"
+        android:layout_marginTop="576dp"
         android:layout_marginEnd="140dp"
         android:text="@string/button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,20 +61,47 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/gender_spinner"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Title"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.833" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="114dp"
-        android:layout_height="29dp"
+        android:layout_width="115dp"
+        android:layout_height="31dp"
         android:lineSpacingExtra="8sp"
         android:text="@string/nationality"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/language_spinner"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gender_spinner" />
+
+    <TextView
+        android:id="@+id/name_container"
+        android:layout_width="224dp"
+        android:layout_height="268dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="64dp"
+        android:scrollHorizontally="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/language_spinner"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="134dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/generateNames"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/language_spinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
