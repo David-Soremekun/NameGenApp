@@ -1,5 +1,6 @@
 package com.example.namegen;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,7 +15,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity{
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity{
     Button button;
     TypeOfName var= TypeOfName.eBoth;
     Languages chosenLang= Languages.eNone;
+    Random randInt = new Random();
     public String[] languages={ "English","French","Spanish","Italian","German", "Portuguese",
             "Norwegian", "Swedish","Japanese", "Polish","Russian", "Arabic"};
     String chosenNameType;
@@ -63,29 +67,21 @@ public class MainActivity extends AppCompatActivity{
             = new ArrayList<String>();*/
     public void ReadFile(String filePath,ArrayList<String> testArray) throws IOException {
 
-        File file= new File(filePath);
-        testArray = new ArrayList<String>();
-        // load data from file
-        BufferedReader bf = new BufferedReader(
-                new FileReader(file));
+        try {
+            String text="";
 
-        // read entire line as string
-        String line = bf.readLine();
-        // checking for end of file
-        while (line != null) {
-            line = bf.readLine();
-            testArray.add(line);
-        }
-        // closing buffer reader object
-        bf.close();
-        // storing the data in arraylist to array
-        String[] array
-                = testArray.toArray(new String[0]);
-        // printing each line of file
-        // which is stored in array
-        for (String str : array)
-        {
-            System.out.println(str);
+            InputStream is = getAssets().open("maleNames.txt");
+            int size = is.available();
+            byte[] buffer= new byte[size];
+
+            is.read(buffer);
+            is.close();
+
+            text= new String(buffer);
+            System.out.println(text);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
     public void DisplayNames() { }
@@ -111,6 +107,7 @@ public class MainActivity extends AppCompatActivity{
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -129,15 +126,15 @@ public class MainActivity extends AppCompatActivity{
                 String value=parent.getItemAtPosition(pos).toString();
                 if(value.equals("Masculine")){
                     var=TypeOfName.eMale;
-                    Log.d("MainActivity", "Selected: "+var);
+                    //Log.d("MainActivity", "Selected: "+var);
                 }
                 else if(value.equals("Feminine")){
                     var=TypeOfName.eFemale;
-                    Log.d("MainActivity", "Selected: "+var);
+                    //Log.d("MainActivity", "Selected: "+var);
                 }
                 else{
                     var=TypeOfName.eBoth;
-                    Log.d("MainActivity", "Selected: "+var);
+                    //Log.d("MainActivity", "Selected: "+var);
                 }
 
             }
@@ -165,6 +162,7 @@ public class MainActivity extends AppCompatActivity{
                 switch (lang){
                     case "English":
                         chosenLang=Languages.eEnglish;
+
 
                     case "Spanish":
                         chosenLang=Languages.eSpanish;
