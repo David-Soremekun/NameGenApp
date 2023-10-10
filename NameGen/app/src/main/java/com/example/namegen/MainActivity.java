@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity{
     Languages chosenLang= Languages.eNone;
 
     public String genName;
-    public int nameCount=12;
+    public int nameCount=10;
 
 
     List<String> femFirstName;
@@ -80,10 +80,10 @@ public class MainActivity extends AppCompatActivity{
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.typesOfName,
-                android.R.layout.simple_spinner_item
+                R.layout.my_selected_spinner
         );
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.my_dropdown_custom);
         genderSpin.setAdapter(adapter);
         genderSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -116,9 +116,9 @@ public class MainActivity extends AppCompatActivity{
         ArrayAdapter<CharSequence> langAdapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.languages,
-                android.R.layout.simple_spinner_dropdown_item
+                R.layout.my_selected_spinner
         );
-        //langSpin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        langAdapter.setDropDownViewResource(R.layout.my_dropdown_custom);
         langSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long l) {

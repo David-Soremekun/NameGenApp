@@ -3,7 +3,7 @@
     <string name="button">Generate</string>
     <string name="gender">Gender: </string>
     <string name="nationality">Nationality: </string>
-    <string name="generateNames">Generated Names: </string>
+    <string name="generateNames">Generated Names-</string>
 
     <string-array name="typesOfName">
         <item>Both</item>
