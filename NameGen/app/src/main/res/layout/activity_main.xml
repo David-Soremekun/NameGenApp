@@ -81,7 +81,7 @@
         android:layout_width="115dp"
         android:layout_height="31dp"
         android:lineSpacingExtra="8sp"
-        android:text="@string/nationality"
+        android:text="@string/language"
         android:textColor="@color/teal"
         android:textSize="20sp"
         android:textStyle="bold"
