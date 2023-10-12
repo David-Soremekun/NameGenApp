@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NameGen 3.0</string>
+    <string name="app_name">Name Generator</string>
     <string name="button">Generate</string>
     <string name="gender">Gender- </string>
     <string name="language">Language- </string>
@@ -4192,4 +4192,5 @@
         <item>Zaid</item>
 
     </string-array>
+
 </resources>

@@ -227,8 +227,14 @@ public class MainActivity extends AppCompatActivity{
     }
     public void DisplayNames()
     {
+        String text_view_text=genText.getText().toString();
+        StringBuilder sb=new StringBuilder(text_view_text);
+        for (int i=0; i<nameList.size();i++){
+            sb.append(nameList.get(i));
+            sb.append(", ");
+            genText.setText(sb.toString());
+        }
 
-        genText.setText(nameList.toString());
         nameList.clear();
 
     }
