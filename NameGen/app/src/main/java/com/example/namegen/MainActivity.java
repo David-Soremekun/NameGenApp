@@ -66,11 +66,17 @@ public class MainActivity extends AppCompatActivity{
     List<String> mascFirstName;
     List<String> LastName;
 
+
     String [] arrLastName;
     String [] arrMaleName;
     String [] arrFemName;
 
     public Vector<String> nameList = new Vector();
+    void ClearArraylist(){
+        mascFirstName.clear();
+        femFirstName.clear();
+        LastName.clear();
+    }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -141,8 +147,6 @@ public class MainActivity extends AppCompatActivity{
                         femFirstName = Arrays.asList(arrFemName);
                         LastName = Arrays.asList(arrLastName);
 
-
-
                         break;
                     case "Portuguese":
                         chosenLang=Languages.ePortuguese;
@@ -164,14 +168,28 @@ public class MainActivity extends AppCompatActivity{
                         break;
                     case "Polish":
                         chosenLang=Languages.ePolish;
+                        arrMaleName = res.getStringArray(R.array.polishMaleNames);
+                        arrFemName = res.getStringArray(R.array.polishFemaleNames);
+                        arrLastName = res.getStringArray(R.array.polishLastNames);
+                        mascFirstName = Arrays.asList(arrMaleName);
+                        femFirstName = Arrays.asList(arrFemName);
+                        LastName = Arrays.asList(arrLastName);
+
                         break;
                     case "Norwegian":
                         chosenLang=Languages.eNorwegian;
                         break;
                     case "Arabic":
                         chosenLang=Languages.eArabic;
+                        arrMaleName = res.getStringArray(R.array.arabicMaleNames);
+                        arrFemName = res.getStringArray(R.array.arabicFemaleNames);
+                        arrLastName = res.getStringArray(R.array.arabicLastNames);
+                        mascFirstName = Arrays.asList(arrMaleName);
+                        femFirstName = Arrays.asList(arrFemName);
+                        LastName = Arrays.asList(arrLastName);
                         break;
-                    default:
+
+                        default:
                         System.out.printf("Oopsie Poopsie!!!");
                         System.out.println("");
                         break;
@@ -196,6 +214,7 @@ public class MainActivity extends AppCompatActivity{
                 RemoveNamesFromDisplay();
                 GenerateNames();
                 DisplayNames();
+                //ClearArraylist();
             }
         });
 

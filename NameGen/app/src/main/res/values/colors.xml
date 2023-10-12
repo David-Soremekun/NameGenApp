@@ -4,6 +4,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="matte_black">#28282B</color>
     <color name="teal">#00DCDC</color>
+    <color name="dark_blue">#1C2130</color>
+    <color name="turqoise">#028F76</color>
+    <color name="light_green">#B3E099</color>
+    <color name="pale_yellow">#FFEAAD</color>
+    <color name="red">#D14334</color>
     <color name="orange">#FFAC1C</color>
     <color name="purple">#7373E3</color>
 </resources>
